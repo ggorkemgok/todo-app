@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>To-Do List</title>
+</head>
+
+<body>
+  <h1>To-Do List</h1>
+  <h1> <%= listTitle %> </h1>
+  <form action="/delete" method="post">
+    <div>
+      <% tasks.forEach(task=> { %>
+        <input type="checkbox" name="checkbox" value="<%=task._id%>" onChange="this.form.submit()">
+        <li>
+          <%= task.name %>
+        </li>
+        <% }); %>
+    </div>
+    <input type="hidden" name="listName" value="<%= listTitle %>">
+  </form>
+  <form action="/addTodo" method="POST">
+    <input type="text" name="newTodo" placeholder="Add a new to do item">
+    <button type="submit" value="<%= listTitle %>" name="list">Add</button>
+  </form>
+</body>
+
+</html>
